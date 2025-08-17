@@ -16,26 +16,26 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    colour = map(vocal,0,100,0,255); //1st ever MAP code
 
 // changes 
-   // vocal bar is red
-   fill(200, 0, 0);
+   // vocal bar is deep desaturated red
+   fill(118,66,30);
    circle(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
    fill(0);
    text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
  
-   // drum bar is green
-   fill(0, 200, 0);
+   // drum bar is deep dark green
+   fill(70,63,44);
    circle(bar_pos_x, height / 2 + 2 * bar_spacing, 4 * drum, bar_height);
    fill(0);
    text("drums", bar_pos_x, height / 2 + 2 * bar_spacing + 8);
  
-   // bass bar is blue
-   fill(50, 50, 240);
+   // bass bar is desaturated green
+   fill(99,101,76);
    circle(bar_pos_x, height / 2 + 3 * bar_spacing, 4 * bass, bar_height);
    fill(0);
    text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
  
-   // other bar is white
-   fill(200, 200, 200);
+   // other bar is eggshel white
+   fill(209,197,178);
    circle(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
    fill(0);
    text("other", bar_pos_x, height / 2 + 4 * bar_spacing + 8);
