@@ -12,8 +12,11 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    let bar_spacing = height / 10;
    let bar_height = width / 12;
    let bar_pos_x = width / 2;
-   
-   colour = map(vocal,0,100,0,255); //1st ever MAP code
+
+   let background_colour1 = (214, 126, 67)
+   let background_colour2 = (232, 149, 94)
+
+   colour = map(vocal,0,100, background_colour1, background_colour2); //1st ever MAP code
 
 // changes 
    // vocal bar is deep desaturated red
@@ -34,7 +37,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    fill(0);
    text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
  
-   // other bar is eggshel white
+   // other bar is eggshell white
    fill(209,197,178);
    circle(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
    fill(0);
