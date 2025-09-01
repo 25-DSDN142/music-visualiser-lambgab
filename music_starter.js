@@ -4,9 +4,13 @@ var colour = 0;
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
-   let BG_lightness;
+  // 1. ~~ The background will change in relation to the vocals with Map from Deep brown to a lighter brown
+  // 2. ~~Change position of ripple in relation to value of vocal/drum/bass/other
+  // 3. Animating multiples ripples/ rings on every ellipse that fade out the farther they get
+
+  let BG_lightness;
     //1. Colour MAP
-   BG_lightness = map(vocal, 0,100, 20, 30); //~~How do I make it change within a hue? = change colour mode into HSL + State WHAT BG_lightness is before added into the coding + check numbers for any typos :/
+  BG_lightness = map(vocal, 0,100, 20, 30); //~~How do I make it change within a hue? = change colour mode into HSL + Callout L value and State WHAT BG_lightness and place it before the code execution + check numbers for any typos :/
 
   background(0, 100, BG_lightness);//(113,0,0,255); //deep brown red
   textFont('Verdana'); // please use CSS safe fonts
@@ -19,17 +23,16 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    let ellipse_height = width / 12;
    let ellipse_pos_x = width / 2;
 
+//Randomise Ripples Position / Leave alone for now until Animation is sorted.
+   //let vocal_pos_x;
+   //let vocal_pos_y;
+   
+//Vocal Ripple Position
+//Drum Ripple Position
+//Bass Ripple Position
+//Other Ripple Position
 
 // CHANGES 
-  // 1. ~~ The background will change in relation to the vocals with Map from Deep brown to a lighter brown
-  // 2. ~~Change position of ripple in relation to value of vocal/drum/bass/other
-  // 3. Animating multiples ripples/ rings on every ellipse that fade out the farther they get
-
-
-
- //1. Colour MAP
-   BG_lightness = map(vocal,0, 10, 22); //~~How do I make it change within a hue and not turn black and white?
-
  //RIPPLES
 
    // vocal bar is deep orange 
@@ -39,6 +42,17 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
      circle(ellipse_pos_x, height / 2 + 1 * ellipse_spacing, 4 * vocal, ellipse_height);
      fill(0);
      text("vocals", ellipse_pos_x, height / 2 + 1 * ellipse_spacing + 8);
+
+     if (ellipse_height > 30){
+
+     noFill();
+     stroke(20, 93, 34);
+     strokeWeight(5);
+     circle(ellipse_pos_x, height / 2 + 1 * ellipse_spacing, 4 * vocal, ellipse_height + 1
+     );
+     fill(0);
+
+     }
  
    // drum bar is dark pastel green
      noFill();
