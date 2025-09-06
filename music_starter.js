@@ -29,9 +29,10 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    let vocal_pos_x;
    let vocal_pos_y;
 
-   //let drum_pos_x;
-   //let drum_pos_y;
-
+   let drum_pos_x;
+   let drum_pos_y;
+   
+   let bass_size = 50;
    //let bass_pos_x;
    //let bass_pos_y;
 
@@ -40,55 +41,72 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    
 //Vocal Ripple Position
    vocal_pos_x = map(vocal, 0, 100, 0, 540);
-   vocal_pos_y = map(vocal, 0, 100, 0, 480)
+   vocal_pos_y = map(vocal, 0, 100, 0, 480);
 //Drum Ripple Position
+  drum_pos_x = map(drum, 0,100, 540, 0);
+  drum_pos_y = map(drum, 0, 100, 960, 500);
 //Bass Ripple Position
 //Other Ripple Position
 
-// CHANGES 
+// CHANGES/Trialing different ripple styles
  //RIPPLES
 
-   // vocal bar is deep orange 
+   //VOCAL bar is deep orange 
+   if(vocal>30){
      noFill();
      stroke(20, 93, 34);
      strokeWeight(5);
-     circle(vocal_pos_x, vocal_pos_y, 4 * vocal, ellipse_height);
+     circle(vocal_pos_x, vocal_pos_y, 4 * vocal, ellipse_height); //OG Variables = (ellipse_pos_x,ellipse_spacing, ellipse_height);
      fill(0);
      text("vocals", ellipse_pos_x, height / 2 + 1 * ellipse_spacing + 8);
 
-    //unanimated ripples js scaled up circles
-     noFill();
-     stroke(20, 93, 34);
-     strokeWeight(6);
-     circle(vocal_pos_x, vocal_pos_y, 5 * vocal, ellipse_height);
-     fill(0);
+      //+unanimated ripples js scaled up circles
+      noFill();
+      stroke(20, 93, 34);
+      strokeWeight(6);
+      circle(vocal_pos_x, vocal_pos_y, 5 * vocal, ellipse_height);
+      noFill();
 
-     noFill();
-     stroke(20, 93, 34);
-     strokeWeight(7);
-     circle(vocal_pos_x, vocal_pos_y, 7 * vocal, ellipse_height);
-     fill(0);
+      noFill();
+      stroke(20, 93, 34);
+      strokeWeight(7);
+      circle(vocal_pos_x, vocal_pos_y, 7 * vocal, ellipse_height);
+      noFill();
+   }
 
  
-   // drum bar is dark pastel green
+   // DRUM bar is dark pastel green + Appears if Drum Value is >30
+   if(drum>30){
      noFill();
      stroke(78, 22, 55);
-     circle(ellipse_pos_x, height / 2 + 2 * ellipse_spacing, 4 * drum, ellipse_height);
-     fill(0);
- 
-   // bass bar is light yellow green
+     circle(ellipse_pos_x,height / 2+3 * ellipse_spacing, 3*drum, ellipse_height);
      noFill();
-     stroke(76, 59, 70);
-     circle(ellipse_pos_x, height / 2 + 3 * ellipse_spacing, 4 * bass, ellipse_height);
-     fill(0);
-     text("bass", ellipse_pos_x, height / 2 + 3 * ellipse_spacing + 8);
+   }
+
  
-   // other bar is bright orange
+   // BASS bar is light yellow green + using LOOPS to Animate
+
+     //noFill();
+     //stroke(76, 59, 70);
+     //circle(ellipse_pos_x, height / 2 + 3 * ellipse_spacing, 4 * bass, ellipse_height);
+     //noFill();
+     //text("bass", ellipse_pos_x, height / 2 + 3 * ellipse_spacing + 8);
+
+    //BASS ANIMATION
+    
+    bass_size = bass_size * 2
+   
+    noFill();
+    stroke(76, 59, 70);
+    circle(275, 475, bass_size);
+    noFill();
+ 
+   // OTHER bar is bright orange
      noFill();
      stroke(33, 91, 40);
      strokeWeight(5);
      circle(ellipse_pos_x, height / 2 + 4 * ellipse_spacing, 4 * other, ellipse_height);
-     fill(0);
+     noFill();
      text("other", ellipse_pos_x, height / 2 + 4 * ellipse_spacing + 8);
      fill(255, 255, 0);
  
