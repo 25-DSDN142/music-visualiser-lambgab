@@ -5,13 +5,17 @@ var colour = 0;
 //Screen Resolution = 540px, 960px
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
-  // 1. ~~ The background will change in relation to the vocals with Map from Deep brown to a lighter brown
-  // 2. ~~Change position of ripple in relation to value of vocal/drum/bass/other
+  // 1. DONE - The background will change in relation to the vocals with Map from Deep brown to a lighter brown
+  // 2. ~Change position of ripple in relation to value of vocal/drum/bass/other
   // 3. Animating multiples ripples/ rings on every ellipse that fade out the farther they get
 
-  let BG_lightness;
     //1. Colour MAP
-  BG_lightness = map(vocal, 0,100, 20, 30); //~~How do I make it change within a hue? = change colour mode into HSL + Callout L value and State WHAT BG_lightness and place it before the code execution + check numbers for any typos :/
+  let BG_lightness;
+  BG_lightness = map(vocal, 0,100, 20, 30); 
+  //~~How do I make it change within a hue? 
+  // + change colour mode into HSL 
+  // + Callout L value and State WHAT BG_lightness and place it before the code execution 
+  // + check numbers for any typos :/
 
   background(0, 100, BG_lightness);//(113,0,0,255); //deep brown red
   textFont('Verdana'); // please use CSS safe fonts
@@ -20,6 +24,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   
   colorMode(HSL)
   
+  //OG Variables = (ellipse_pos_x,ellipse_spacing, ellipse_height);
    let ellipse_spacing = height / 10;
    let ellipse_height = width / 12;
    let ellipse_pos_x = width / 2;
@@ -51,73 +56,125 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 // CHANGES/Trialing different ripple styles
  //RIPPLES
 
-   //VOCAL bar is deep orange 
-   if(vocal>30){
+   //VOCAL bar is deep orange + reactive placement
+   if(vocal<50){
      noFill();
      stroke(20, 93, 34);
      strokeWeight(5);
-     circle(vocal_pos_x, vocal_pos_y, 4 * vocal, ellipse_height); //OG Variables = (ellipse_pos_x,ellipse_spacing, ellipse_height);
-     fill(0);
-     text("vocals", ellipse_pos_x, height / 2 + 1 * ellipse_spacing + 8);
+     circle(100, 200, 4 * vocal, ellipse_height); 
 
-      //+unanimated ripples js scaled up circles
+      //Drawn on Ripples are just scaled up circles
       noFill();
       stroke(20, 93, 34);
       strokeWeight(6);
-      circle(vocal_pos_x, vocal_pos_y, 5 * vocal, ellipse_height);
+      circle(100, 200, 5 * vocal, ellipse_height);
       noFill();
 
       noFill();
       stroke(20, 93, 34);
       strokeWeight(7);
-      circle(vocal_pos_x, vocal_pos_y, 7 * vocal, ellipse_height);
+      circle(100, 200, 7 * vocal, ellipse_height);
       noFill();
    }
 
+    if(vocal>50){
+     noFill();
+     stroke(20, 93, 34);
+     strokeWeight(5);
+     circle(300, 500, 4 * vocal, ellipse_height); 
+
+      //Drawn on Ripples are just scaled up circles
+      noFill();
+      stroke(20, 93, 34);
+      strokeWeight(6);
+      circle(300, 500, 5 * vocal, ellipse_height);
+      noFill();
+
+      noFill();
+      stroke(20, 93, 34);
+      strokeWeight(7);
+      circle(300, 500, 7 * vocal, ellipse_height);
+      noFill();
+   }
  
-   // DRUM bar is dark pastel green + Appears if Drum Value is >30
+
+   // DRUM bar is dark pastel green 
    if(drum>30){
      noFill();
      stroke(78, 22, 55);
-     circle(ellipse_pos_x,height / 2+3 * ellipse_spacing, 3*drum, ellipse_height);
+     strokeWeight(3);
+     circle(540, 900, 7*drum, ellipse_height);
      noFill();
+
+    //Drawn on Ripples are just scaled up circles
+    noFill();
+    stroke(78, 22, 55);
+    strokeWeight(5);
+    circle(540, 900, 10*drum, ellipse_height);
+    noFill();
    }
 
- 
-   // BASS bar is light yellow green + using IF statements for placement + using LOOPS to Animate
+      if(drum<30){
+     noFill();
+     stroke(78, 22, 55);
+     strokeWeight(3);
+     circle(350, 300, 5*drum, ellipse_height);
+     noFill();
 
-   if (bass<=25) { //if bass is less than or equal to 25 it will appear on the bottom left of screen
+    //Drawn on Ripples are just scaled up circles
+    noFill();
+    stroke(78, 22, 55);
+    strokeWeight(5);
+    circle(350, 300, 6*drum, ellipse_height);
+    noFill();
+   }
+   
+
+ 
+   // BASS bar is light yellow green + using IF statements for reactive placement 
+
+   if (bass>45) { 
     noFill();
     stroke(76, 59, 70);
     circle(70, 750, 4 * bass, ellipse_height);
     noFill();
-    text("bass", ellipse_pos_x, height / 2 + 3 * ellipse_spacing + 8);
+          
+    //Drawn on Ripples are just scaled up circles
+      noFill();
+      stroke(76, 59, 70);
+      strokeWeight(6);
+      circle(70, 750, 5 * bass, ellipse_height);
+      noFill();
+
+      noFill();
+      stroke(76, 59, 70);
+      strokeWeight(7);
+      circle(70, 750, 7 * bass, ellipse_height);
+      noFill();
    }
 
-   if (bass>30) {
+   if (bass<40) { //~~bass is less than 75 but greater than 50 execute:
     noFill();
     stroke(76, 59, 70);
-    circle(150, 500, 4 * bass, ellipse_height);
+    strokeWeight(3);
+    circle(370, 25, 4 * bass, ellipse_height);
     noFill();
-    text("bass", ellipse_pos_x, height / 2 + 3 * ellipse_spacing + 8);
-   }
 
-      if (bass>50) {
     noFill();
     stroke(76, 59, 70);
-    circle(359, 150, 4 * bass, ellipse_height);
+    strokeWeight(5);
+    circle(370, 25, 6 * bass, ellipse_height);
     noFill();
-    text("bass", ellipse_pos_x, height / 2 + 3 * ellipse_spacing + 8);
    }
   
  
-   // OTHER bar is bright orange
+   // OTHER bar is bright orange = using IF statements for reactive placement
+
+   if(other>80) {
      noFill();
      stroke(33, 91, 40);
-     strokeWeight(5);
-     circle(ellipse_pos_x, height / 2 + 4 * ellipse_spacing, 4 * other, ellipse_height);
-     noFill();
-     text("other", ellipse_pos_x, height / 2 + 4 * ellipse_spacing + 8);
-     fill(255, 255, 0);
+     strokeWeight(2);
+     line(0, 500, 350, 960);
+   }
 
 }
