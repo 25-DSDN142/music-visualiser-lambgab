@@ -84,22 +84,32 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    }
 
  
-   // BASS bar is light yellow green + using LOOPS to Animate
+   // BASS bar is light yellow green + using IF statements for placement + using LOOPS to Animate
 
-     //noFill();
-     //stroke(76, 59, 70);
-     //circle(ellipse_pos_x, height / 2 + 3 * ellipse_spacing, 4 * bass, ellipse_height);
-     //noFill();
-     //text("bass", ellipse_pos_x, height / 2 + 3 * ellipse_spacing + 8);
-
-    //BASS ANIMATION
-    
-    bass_size = bass_size * 2
-   
+   if (bass<=25) { //if bass is less than or equal to 25 it will appear on the bottom left of screen
     noFill();
     stroke(76, 59, 70);
-    circle(275, 475, bass_size);
+    circle(70, 750, 4 * bass, ellipse_height);
     noFill();
+    text("bass", ellipse_pos_x, height / 2 + 3 * ellipse_spacing + 8);
+   }
+
+   if (bass>30) {
+    noFill();
+    stroke(76, 59, 70);
+    circle(150, 500, 4 * bass, ellipse_height);
+    noFill();
+    text("bass", ellipse_pos_x, height / 2 + 3 * ellipse_spacing + 8);
+   }
+
+      if (bass>50) {
+    noFill();
+    stroke(76, 59, 70);
+    circle(359, 150, 4 * bass, ellipse_height);
+    noFill();
+    text("bass", ellipse_pos_x, height / 2 + 3 * ellipse_spacing + 8);
+   }
+  
  
    // OTHER bar is bright orange
      noFill();
@@ -109,12 +119,5 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
      noFill();
      text("other", ellipse_pos_x, height / 2 + 4 * ellipse_spacing + 8);
      fill(255, 255, 0);
- 
-   // display "words"
-     fill(20, 93, 34);
-     stroke(20, 93, 34);
-     textAlign(CENTER);
-     textSize(vocal);
-     text(words, width/2, height/3);
 
 }
