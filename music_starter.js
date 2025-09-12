@@ -11,10 +11,24 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(0, 100, BG_lightness);//(113,0,0,255); //deep brown red
   colorMode(HSL)
 
+   //OTHER bar is bright orange + using IF statements for reactive placement
+    noFill( );
+    stroke(33, 91, 40);
+    strokeWeight(2);
+    circle(0, 960, 7 * other);
 
+    noFill();
+    stroke(23, 85, 39);
+    strokeWeight(5);
+    circle(0, 960, 15 * other);
+    
+    noFill();
+    stroke(17, 81, 35);
+    strokeWeight(10);
+    circle(0, 960, 20 * other);
 
    //VOCAL bar is deep orange + reactive placement
-   if(vocal<50){
+   if(vocal<45){
      noFill();
      stroke(20, 93, 34);
      strokeWeight(5);
@@ -56,7 +70,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
  
 
    // DRUM bar is dark pastel green 
-   if(drum>30){
+   if(drum>45){
      noFill();
      stroke(78, 22, 55);
      strokeWeight(3);
@@ -71,69 +85,56 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     noFill();
    }
 
-      if(drum<30){
+   if(drum<40){
      noFill();
      stroke(78, 22, 55);
      strokeWeight(3);
-     circle(540, 900, 7*drum);
+     circle(500, 900, 7*drum);
      noFill();
 
     //Drawn on Ripples are just scaled up circles
     noFill();
     stroke(65, 20, 42);
     strokeWeight(5);
-    circle(540, 900, 10*drum);
+    circle(500, 900, 10*drum);
     noFill();
    }
    
 
  
    // BASS bar is light yellow green + using IF statements for reactive placement 
-
-   if (bass>50) { 
-    noFill();
-    stroke(76, 59, 70);
-    circle(70, 750, 4 * bass);
-    noFill();
+   if (bass>60) { 
+     noFill();
+     stroke(76, 59, 70);
+     circle(70, 750, 4 * bass);
+     noFill();
           
-    //Drawn on Ripples are just scaled up circles
-      noFill();
-      stroke(57, 44, 62);
-      strokeWeight(6);
-      circle(70, 750, 5 * bass);
-      noFill();
+   //Drawn on Ripples are just scaled up circles
+   noFill();
+   stroke(57, 44, 62);
+   strokeWeight(6);
+   circle(70, 750, 5 * bass);
+   noFill();
 
-      noFill();
-      stroke(38, 30, 48);
-      strokeWeight(7);
-      circle(70, 750, 7 * bass);
-      noFill();
+   noFill();
+   stroke(38, 30, 48);
+   strokeWeight(7);
+   circle(70, 750, 7 * bass);
+   noFill();
    }
 
    if (bass<50) {
-    noFill();
-    stroke(57, 44, 62);
-    strokeWeight(3);
-    circle(370, 25, 4 * bass);
-    noFill();
+     noFill();
+     stroke(57, 44, 62);
+     strokeWeight(3);
+     circle(370, 25, 4 * bass);
+     noFill();
 
-    noFill();
-    stroke(38, 30, 48);
-    strokeWeight(5);
-    circle(370, 25, 6 * bass);
-    noFill();
+     noFill();
+     stroke(38, 30, 48);
+     strokeWeight(5);
+     circle(370, 25, 6 * bass);
+     noFill();
    }
   
- 
-   // OTHER bar is bright orange + using IF statements for reactive placement
-
-    noFill();
-    stroke(33, 91, 40);
-    strokeWeight(2);
-    circle(0, 960, 15 * other);
-
-    noFill();
-    stroke(33, 91, 40);
-    strokeWeight(5);
-    circle(0, 960, 20 * other);
 }
