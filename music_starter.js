@@ -1,43 +1,140 @@
 
+var colour = 0;
+
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
+//Screen Resolution = 540px, 960px
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  background(20)
-  textFont('Verdana'); // please use CSS safe fonts
-  rectMode(CENTER)
-  textSize(24);
+
+  let BG_lightness;
+  BG_lightness = map(vocal, 0,100, 20, 30); 
+
+  background(0, 100, BG_lightness);//(113,0,0,255); //deep brown red
+  colorMode(HSL)
+
+   //OTHER bar is bright orange + using IF statements for reactive placement
+    noFill( );
+    stroke(33, 91, 40);
+    strokeWeight(2);
+    circle(0, 960, 7 * other);
+
+    noFill();
+    stroke(23, 85, 39);
+    strokeWeight(5);
+    circle(0, 960, 15 * other);
+    
+    noFill();
+    stroke(17, 81, 35);
+    strokeWeight(10);
+    circle(0, 960, 20 * other);
+
+   //VOCAL bar is deep orange + reactive placement
+   if(vocal<45){
+     noFill();
+     stroke(20, 93, 34);
+     strokeWeight(5);
+     circle(100, 125, 4 * vocal); 
+
+      //Drawn on Ripples are just scaled up circles
+      noFill();
+      stroke(13, 88, 34);
+      strokeWeight(6);
+      circle(100, 125, 5 * vocal);
+      noFill();
+
+      noFill();
+      stroke(13, 88, 31);
+      strokeWeight(7);
+      circle(100, 125, 8 * vocal);
+      noFill();
+   }
+
+    if(vocal>50){
+     noFill();
+     stroke(20, 93, 34);
+     strokeWeight(5);
+     circle(300, 500, 4 * vocal); 
+
+      //Drawn on Ripples are just scaled up circles
+      noFill();
+      stroke(13, 88, 34);
+      strokeWeight(6);
+      circle(300, 500, 5 * vocal);
+      noFill();
+
+      noFill();
+      stroke(13, 88, 31);
+      strokeWeight(7);
+      circle(300, 500, 7 * vocal);
+      noFill();
+   }
+ 
+
+   // DRUM bar is dark pastel green 
+   if(drum>45){
+     noFill();
+     stroke(78, 22, 55);
+     strokeWeight(3);
+     circle(350, 200, 5*drum);
+     noFill();
+
+    //Drawn on Ripples are just scaled up circles
+    noFill();
+    stroke(65, 20, 42);
+    strokeWeight(5);
+    circle(350, 200, 6*drum);
+    noFill();
+   }
+
+   if(drum<40){
+     noFill();
+     stroke(78, 22, 55);
+     strokeWeight(3);
+     circle(500, 900, 7*drum);
+     noFill();
+
+    //Drawn on Ripples are just scaled up circles
+    noFill();
+    stroke(65, 20, 42);
+    strokeWeight(5);
+    circle(500, 900, 10*drum);
+    noFill();
+   }
+   
+
+ 
+   // BASS bar is light yellow green + using IF statements for reactive placement 
+   if (bass>60) { 
+     noFill();
+     stroke(76, 59, 70);
+     circle(70, 750, 4 * bass);
+     noFill();
+          
+   //Drawn on Ripples are just scaled up circles
+   noFill();
+   stroke(57, 44, 62);
+   strokeWeight(6);
+   circle(70, 750, 5 * bass);
+   noFill();
+
+   noFill();
+   stroke(38, 30, 48);
+   strokeWeight(7);
+   circle(70, 750, 7 * bass);
+   noFill();
+   }
+
+   if (bass<50) {
+     noFill();
+     stroke(57, 44, 62);
+     strokeWeight(3);
+     circle(370, 25, 4 * bass);
+     noFill();
+
+     noFill();
+     stroke(38, 30, 48);
+     strokeWeight(5);
+     circle(370, 25, 6 * bass);
+     noFill();
+   }
   
-   let bar_spacing = height / 10;
-   let bar_height = width / 12;
-   let bar_pos_x = width / 2;
- 
-// changes 
-   // vocal bar is red
-   fill(200, 0, 0);
-   rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
-   fill(0);
-   text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
- 
-   // drum bar is green
-   fill(0, 200, 0);
-   rect(bar_pos_x, height / 2 + 2 * bar_spacing, 4 * drum, bar_height);
-   fill(0);
-   text("drums", bar_pos_x, height / 2 + 2 * bar_spacing + 8);
- 
-   // bass bar is blue
-   fill(50, 50, 240);
-   rect(bar_pos_x, height / 2 + 3 * bar_spacing, 4 * bass, bar_height);
-   fill(0);
-   text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
- 
-   // other bar is white
-   fill(200, 200, 200);
-   rect(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
-   fill(0);
-   text("other", bar_pos_x, height / 2 + 4 * bar_spacing + 8);
-   fill(255, 255, 0);
- 
-   // display "words"
-   textAlign(CENTER);
-   textSize(vocal);
-   text(words, width/2, height/3);
 }
